@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:12215",
-      "sslPort": 44317
+      "applicationUrl": "http://localhost:23089",
+      "sslPort": 44333
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Delprojekt_Gruppe6_Backend": {
+    "Backend": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

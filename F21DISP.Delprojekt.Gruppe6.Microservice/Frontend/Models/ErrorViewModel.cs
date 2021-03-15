@@ -1,6 +1,6 @@
 using System;
 
-namespace Delprojekt_Gruppe6_Frontend.Models
+namespace Frontend.Models
 {
     public class ErrorViewModel
     {

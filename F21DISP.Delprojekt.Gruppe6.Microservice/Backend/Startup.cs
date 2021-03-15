@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Delprojekt_Gruppe6_Backend
+namespace Backend
 {
     public class Startup
     {

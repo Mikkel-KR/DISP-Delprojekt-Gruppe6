@@ -1,6 +1,6 @@
 using System;
 
-namespace Delprojekt_Gruppe6_Backend
+namespace Backend
 {
     public class WeatherForecast
     {

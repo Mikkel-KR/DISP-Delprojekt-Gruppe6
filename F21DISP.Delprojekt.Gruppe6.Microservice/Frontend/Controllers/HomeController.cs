@@ -1,4 +1,4 @@
-﻿using Delprojekt_Gruppe6_Frontend.Models;
+﻿using Frontend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Delprojekt_Gruppe6_Frontend.Controllers
+namespace Frontend.Controllers
 {
     public class HomeController : Controller
     {
