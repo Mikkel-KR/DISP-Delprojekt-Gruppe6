@@ -1,0 +1,13 @@
+*************************************Backend deploy inklusiv Docker*******************************
+***IN Command Prompt
+***Change directory to Backend Project directory ( Where CSPROJ file is)
+> dotnet restore
+> dotnet build
+> dotnet publish -o dist
+> cd ./dist
+dist> docker build -t microservicebackend .
+dist> docker tag microservicebackend yourhub/microservicebackend
+dist> docker push yourhub/microservicebackend
+dist> kubectl create deployment f20itonkackendXYZ --image=docker.io/yourhub/microservicebackend:latest
+dist> kubectl expose deployment  f20itonkackendXYZ --type=LoadBalancer --port=8080 --target-port=80
+
