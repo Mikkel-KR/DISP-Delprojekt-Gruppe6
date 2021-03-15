@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Frontend.Models.Haandvaerker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HVAnsaettelsedato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HVEfternavn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HVFagomraade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HVFornavn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HVAnsaettelsedato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HVEfternavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HVFagomraade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HVFornavn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HaandvaerkerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HaandvaerkerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HaandvaerkerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

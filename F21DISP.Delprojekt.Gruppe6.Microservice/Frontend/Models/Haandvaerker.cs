@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace F20ITONK.ASPNETCore.MicroService.ClassLib.Models
+namespace Frontend.Models
 {
     public partial class Haandvaerker
     {

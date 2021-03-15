@@ -1,6 +1,6 @@
 using System;
 
-namespace Frontend.ViewModels
+namespace Frontend.Models
 {
     public class ErrorViewModel
     {
