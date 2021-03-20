@@ -25,14 +25,14 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Haandvaerker>>> GetHaandvaerkerSet()
         {
-            return await _context.HaandvaerkerSet.ToListAsync();
+            return await _context.Haandvaerker.ToListAsync();
         }
 
         // GET: api/Haandvaerker/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Haandvaerker>> GetHaandvaerker(int id)
         {
-            var haandvaerker = await _context.HaandvaerkerSet.FindAsync(id);
+            var haandvaerker = await _context.Haandvaerker.FindAsync(id);
 
             if (haandvaerker == null)
             {
@@ -80,7 +80,7 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Haandvaerker>> PostHaandvaerker(Haandvaerker haandvaerker)
         {
-            _context.HaandvaerkerSet.Add(haandvaerker);
+            _context.Haandvaerker.Add(haandvaerker);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetHaandvaerker", new { id = haandvaerker.HaandvaerkerId }, haandvaerker);
@@ -90,13 +90,13 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Haandvaerker>> DeleteHaandvaerker(int id)
         {
-            var haandvaerker = await _context.HaandvaerkerSet.FindAsync(id);
+            var haandvaerker = await _context.Haandvaerker.FindAsync(id);
             if (haandvaerker == null)
             {
                 return NotFound();
             }
 
-            _context.HaandvaerkerSet.Remove(haandvaerker);
+            _context.Haandvaerker.Remove(haandvaerker);
             await _context.SaveChangesAsync();
 
             return haandvaerker;
@@ -104,7 +104,7 @@ namespace Backend.Controllers
 
         private bool HaandvaerkerExists(int id)
         {
-            return _context.HaandvaerkerSet.Any(e => e.HaandvaerkerId == id);
+            return _context.Haandvaerker.Any(e => e.HaandvaerkerId == id);
         }
     }
 }

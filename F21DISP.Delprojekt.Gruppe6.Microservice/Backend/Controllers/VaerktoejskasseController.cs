@@ -25,14 +25,14 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vaerktoejskasse>>> GetVaerktoejskasseSet()
         {
-            return await _context.VaerktoejskasseSet.ToListAsync();
+            return await _context.Vaerktoejskasse.ToListAsync();
         }
 
         // GET: api/Vaerktoejskasse/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Vaerktoejskasse>> GetVaerktoejskasse(int id)
         {
-            var vaerktoejskasse = await _context.VaerktoejskasseSet.FindAsync(id);
+            var vaerktoejskasse = await _context.Vaerktoejskasse.FindAsync(id);
 
             if (vaerktoejskasse == null)
             {
@@ -80,7 +80,7 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Vaerktoejskasse>> PostVaerktoejskasse(Vaerktoejskasse vaerktoejskasse)
         {
-            _context.VaerktoejskasseSet.Add(vaerktoejskasse);
+            _context.Vaerktoejskasse.Add(vaerktoejskasse);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetVaerktoejskasse", new { id = vaerktoejskasse.VTKId }, vaerktoejskasse);
@@ -90,13 +90,13 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Vaerktoejskasse>> DeleteVaerktoejskasse(int id)
         {
-            var vaerktoejskasse = await _context.VaerktoejskasseSet.FindAsync(id);
+            var vaerktoejskasse = await _context.Vaerktoejskasse.FindAsync(id);
             if (vaerktoejskasse == null)
             {
                 return NotFound();
             }
 
-            _context.VaerktoejskasseSet.Remove(vaerktoejskasse);
+            _context.Vaerktoejskasse.Remove(vaerktoejskasse);
             await _context.SaveChangesAsync();
 
             return vaerktoejskasse;
@@ -104,7 +104,7 @@ namespace Backend.Controllers
 
         private bool VaerktoejskasseExists(int id)
         {
-            return _context.VaerktoejskasseSet.Any(e => e.VTKId == id);
+            return _context.Vaerktoejskasse.Any(e => e.VTKId == id);
         }
     }
 }
