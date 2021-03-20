@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.HVAnsaettelsedato)
+                @Html.DisplayNameFor(model => model.HVFornavn)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.HVEfternavn)
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.HVFagomraade)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HVFornavn)
+                @Html.DisplayNameFor(model => model.HVAnsaettelsedato)
             </th>
             <th></th>
         </tr>
@@ -31,7 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.HVAnsaettelsedato)
+                @Html.DisplayFor(modelItem => item.HVFornavn)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HVEfternavn)
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.HVFagomraade)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HVFornavn)
+                @Html.DisplayFor(modelItem => item.HVAnsaettelsedato)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.HaandvaerkerId">Edit</a> |

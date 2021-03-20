@@ -14,9 +14,13 @@ namespace Frontend.Models
         }
         [Key]
         public int HaandvaerkerId { get; set; }
+        [Display(Name = "Ansættelses dato")]
         public DateTime HVAnsaettelsedato { get; set; }
+        [Display(Name = "Efternavn")]
         public string HVEfternavn { get; set; }
+        [Display(Name = "Fagområde")]
         public string HVFagomraade { get; set; }
+        [Display(Name = "Fornavn")]
         public string HVFornavn { get; set; }
         public HashSet<Vaerktoejskasse> Vaerktoejskasse { get; set; }
     }

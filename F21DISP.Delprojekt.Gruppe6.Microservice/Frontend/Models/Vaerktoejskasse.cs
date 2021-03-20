@@ -14,11 +14,17 @@ namespace Frontend.Models
         }
         [Key]
         public int VTKId { get; set; }
+        [Display(Name = "Anskaffet")]
         public DateTime VTKAnskaffet { get; set; }
+        [Display(Name = "Fabrikat")]
         public string VTKFabrikat { get; set; }
+        [Display(Name = "Ejes af")]
         public int? VTKEjesAf { get; set; }
+        [Display(Name = "Model")]
         public string VTKModel { get; set; }
+        [Display(Name = "Serienummer")]
         public string VTKSerienummer { get; set; }
+        [Display(Name = "Farve")]
         public string VTKFarve { get; set; }
         public Haandvaerker EjesAfNavigation { get; set; }
         public HashSet<Vaerktoej> Vaerktoej { get; set; }

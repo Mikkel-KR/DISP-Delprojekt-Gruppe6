@@ -42,5 +42,9 @@ namespace Frontend.Data
         }
 
         public DbSet<Frontend.Models.Haandvaerker> Haandvaerker { get; set; }
+
+        public DbSet<Frontend.Models.Vaerktoejskasse> Vaerktoejskasse { get; set; }
+
+        public DbSet<Frontend.Models.Vaerktoej> Vaerktoej { get; set; }
     }
 }

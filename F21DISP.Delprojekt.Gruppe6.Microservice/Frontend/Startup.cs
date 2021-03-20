@@ -31,7 +31,7 @@ namespace Frontend
             services.AddControllers().AddNewtonsoftJson();
 
             services.AddDbContext<ApplicationDbContextFrontend>(options =>
-                    options.UseSqlServer("test"));
+                    options.UseSqlServer(Configuration.GetConnectionString("localDb")));
 
             //Enable DIP for a HTTP Client to subsitute calls to DBContex with a HTTP Request
             //services.AddHttpClient();
@@ -53,10 +53,11 @@ namespace Frontend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContextFrontend context)
         {
             if (env.IsDevelopment())
             {
+                context.Database.EnsureCreated();
                 app.UseDeveloperExceptionPage();
             }
             else

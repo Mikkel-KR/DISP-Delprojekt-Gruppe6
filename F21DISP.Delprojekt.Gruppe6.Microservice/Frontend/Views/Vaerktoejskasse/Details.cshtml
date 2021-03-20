@@ -1,0 +1,54 @@
+﻿@model Frontend.Models.Vaerktoejskasse
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Vaerktoejskasse</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKAnskaffet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VTKAnskaffet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKFabrikat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VTKFabrikat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKEjesAf)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="Haandvaerker" asp-action="Details" asp-route-id="@Model.VTKEjesAf">@Html.DisplayFor(model => model.VTKEjesAf)</a>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKModel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VTKModel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKSerienummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VTKSerienummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VTKFarve)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VTKFarve)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VTKId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
