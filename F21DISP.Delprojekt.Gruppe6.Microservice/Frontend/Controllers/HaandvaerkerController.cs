@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 using System.Net.Http;
-using System.Text.Json;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Frontend.Controllers
 {
@@ -28,7 +29,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var haandvaerkers = JsonSerializer.Deserialize<List<Haandvaerker>>(json);
+            var haandvaerkers = JsonConvert.DeserializeObject<List<Haandvaerker>>(json);
 
             return View(haandvaerkers);
         }
@@ -46,7 +47,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var haandvaerker = JsonSerializer.Deserialize<Haandvaerker>(json);
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
 
             if (haandvaerker == null)
                 return NotFound();
@@ -71,8 +72,8 @@ namespace Frontend.Controllers
             {
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(haandvaerker);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(haandvaerker);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Create
                 var result = await client.PostAsync(HaandvaerkerBaseUrl, content);
@@ -96,7 +97,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var haandvaerker = JsonSerializer.Deserialize<Haandvaerker>(json);
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
 
             if (haandvaerker == null)
                 return NotFound();
@@ -118,8 +119,8 @@ namespace Frontend.Controllers
             {
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(haandvaerker);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(haandvaerker);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Update
                 var result = await client.PutAsync(HaandvaerkerBaseUrl, content);
@@ -143,7 +144,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var haandvaerker = JsonSerializer.Deserialize<Haandvaerker>(json);
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
 
             if (haandvaerker == null)
                 return NotFound();

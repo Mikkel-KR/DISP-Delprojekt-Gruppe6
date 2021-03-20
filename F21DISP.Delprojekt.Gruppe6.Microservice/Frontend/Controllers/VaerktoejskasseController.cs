@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 using System.Net.Http;
-using System.Text.Json;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Frontend.Controllers
 {
@@ -28,7 +29,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoejskasser = JsonSerializer.Deserialize<List<Vaerktoejskasse>>(json);
+            var vaerktoejskasser = JsonConvert.DeserializeObject<List<Vaerktoejskasse>>(json);
 
             return View(vaerktoejskasser);
         }
@@ -46,7 +47,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoejskasse = JsonSerializer.Deserialize<Vaerktoejskasse>(json);
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
 
             if (vaerktoejskasse == null)
                 return NotFound();
@@ -71,8 +72,8 @@ namespace Frontend.Controllers
             {
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(vaerktoejskasse);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(vaerktoejskasse);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Create
                 var result = await client.PostAsync(VaerktoejskasseBaseUrl, content);
@@ -96,7 +97,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoejskasse = JsonSerializer.Deserialize<Vaerktoejskasse>(json);
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
 
             if (vaerktoejskasse == null)
                 return NotFound();
@@ -119,8 +120,8 @@ namespace Frontend.Controllers
 
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(vaerktoejskasse);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(vaerktoejskasse);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Update
                 var result = await client.PutAsync(VaerktoejskasseBaseUrl, content);
@@ -144,7 +145,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoejskasse = JsonSerializer.Deserialize<Vaerktoejskasse>(json);
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
 
             if (vaerktoejskasse == null)
                 return NotFound();

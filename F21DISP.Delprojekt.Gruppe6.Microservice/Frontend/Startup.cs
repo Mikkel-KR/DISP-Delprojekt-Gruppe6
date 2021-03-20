@@ -35,7 +35,8 @@ namespace Frontend
                 var host = Configuration["F20ITONKBACKENDJRT_SERVICE_HOST"];
                 var port = Configuration["F20ITONKBACKENDJRT_PORT_8080_TCP_PORT"];
                 //c.BaseAddress = new Uri("http://10.24.128.200:32787/"); //local test connection to backend container
-                c.BaseAddress = new Uri("http://10.192.57.127:32787/"); //local test connection to backend container
+                //c.BaseAddress = new Uri("http://10.192.57.127:32787/"); //local test connection to backend container
+                c.BaseAddress = new Uri("http://localhost:23089/"); //local IIS backend connection (DEBUG)
 
                 //Remark below not using https but http
                 //c.BaseAddress = new Uri("http://" + host + ":" + port + "/"); //Using environment variables

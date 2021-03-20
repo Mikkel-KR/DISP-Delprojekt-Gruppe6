@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Frontend.Models;
 using System.Net.Http;
-using System.Text.Json;
 using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Frontend.Controllers
 {
@@ -28,7 +29,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoejList = JsonSerializer.Deserialize<List<Vaerktoej>>(json);
+            var vaerktoejList = JsonConvert.DeserializeObject<List<Vaerktoej>>(json);
 
             return View(vaerktoejList);
         }
@@ -46,7 +47,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoej = JsonSerializer.Deserialize<Vaerktoej>(json);
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
 
             if (vaerktoej == null)
                 return NotFound();
@@ -71,8 +72,8 @@ namespace Frontend.Controllers
             {
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(vaerktoej);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(vaerktoej);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Create
                 var result = await client.PostAsync(VaerktoejBaseUrl, content);
@@ -96,7 +97,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoej = JsonSerializer.Deserialize<Vaerktoej>(json);
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
 
             if (vaerktoej == null)
                 return NotFound();
@@ -118,8 +119,8 @@ namespace Frontend.Controllers
             {
                 var client = _clientFactory.CreateClient(BackendClientName);
 
-                var json = JsonSerializer.Serialize(vaerktoej);
-                var content = new StringContent(json);
+                var json = JsonConvert.SerializeObject(vaerktoej);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Update
                 var result = await client.PutAsync(VaerktoejBaseUrl, content);
@@ -143,7 +144,7 @@ namespace Frontend.Controllers
                 return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
-            var vaerktoej = JsonSerializer.Deserialize<Vaerktoej>(json);
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
 
             if (vaerktoej == null)
                 return NotFound();
