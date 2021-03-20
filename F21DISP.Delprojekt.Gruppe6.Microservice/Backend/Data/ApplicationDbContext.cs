@@ -40,10 +40,10 @@ namespace Backend.Data
                 .ValueGeneratedOnAdd();
         }
 
-        public DbSet<Haandvaerker> HaandvaerkerSet { get; set; }
+        public DbSet<Haandvaerker> Haandvaerker { get; set; }
 
-        public DbSet<Vaerktoejskasse> VaerktoejskasseSet { get; set; }
+        public DbSet<Vaerktoejskasse> Vaerktoejskasse { get; set; }
 
-        public DbSet<Vaerktoej> VaerktoejSet { get; set; }
+        public DbSet<Vaerktoej> Vaerktoej { get; set; }
     }
 }

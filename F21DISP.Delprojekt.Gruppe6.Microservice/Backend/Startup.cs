@@ -34,7 +34,7 @@ namespace Backend
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DockerConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("BackendContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +46,9 @@ namespace Backend
             }
 
             //Do "Update-Database" runtime. Requires an "Add-Migration" done first
-            db.Database.Migrate();
+
+            db.Database.EnsureCreated();
+            //db.Database.Migrate();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

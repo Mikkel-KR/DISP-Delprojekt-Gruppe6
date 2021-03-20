@@ -12,11 +12,11 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VaerktoejsController : ControllerBase
+    public class VaerktoejController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public VaerktoejsController(ApplicationDbContext context)
+        public VaerktoejController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -25,14 +25,14 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Vaerktoej>>> GetVaerktoejSet()
         {
-            return await _context.VaerktoejSet.ToListAsync();
+            return await _context.Vaerktoej.ToListAsync();
         }
 
         // GET: api/Vaerktoejs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Vaerktoej>> GetVaerktoej(long id)
         {
-            var vaerktoej = await _context.VaerktoejSet.FindAsync(id);
+            var vaerktoej = await _context.Vaerktoej.FindAsync(id);
 
             if (vaerktoej == null)
             {
@@ -80,7 +80,7 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Vaerktoej>> PostVaerktoej(Vaerktoej vaerktoej)
         {
-            _context.VaerktoejSet.Add(vaerktoej);
+            _context.Vaerktoej.Add(vaerktoej);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetVaerktoej", new { id = vaerktoej.VTId }, vaerktoej);
@@ -90,13 +90,13 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Vaerktoej>> DeleteVaerktoej(long id)
         {
-            var vaerktoej = await _context.VaerktoejSet.FindAsync(id);
+            var vaerktoej = await _context.Vaerktoej.FindAsync(id);
             if (vaerktoej == null)
             {
                 return NotFound();
             }
 
-            _context.VaerktoejSet.Remove(vaerktoej);
+            _context.Vaerktoej.Remove(vaerktoej);
             await _context.SaveChangesAsync();
 
             return vaerktoej;
@@ -104,7 +104,7 @@ namespace Backend.Controllers
 
         private bool VaerktoejExists(long id)
         {
-            return _context.VaerktoejSet.Any(e => e.VTId == id);
+            return _context.Vaerktoej.Any(e => e.VTId == id);
         }
     }
 }
