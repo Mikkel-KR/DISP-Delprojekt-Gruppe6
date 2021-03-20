@@ -11,19 +11,20 @@ namespace Frontend.Controllers
     public class VaerktoejController : Controller
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _client;
         private readonly string BackendClientName = "backend";
         private readonly string VaerktoejBaseUrl = "api/Vaerktoej";
 
         public VaerktoejController(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
+            _client = clientFactory.CreateClient(BackendClientName);
         }
 
         // GET: Vaerktoej
         public async Task<IActionResult> Index()
         {
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync(VaerktoejBaseUrl);
+            var response = await _client.GetAsync(VaerktoejBaseUrl);
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -40,8 +41,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -70,13 +70,11 @@ namespace Frontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                var client = _clientFactory.CreateClient(BackendClientName);
-
                 var json = JsonConvert.SerializeObject(vaerktoej);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Create
-                var result = await client.PostAsync(VaerktoejBaseUrl, content);
+                var result = await _client.PostAsync(VaerktoejBaseUrl, content);
 
                 if (result.IsSuccessStatusCode)
                     return RedirectToAction(nameof(Index));
@@ -90,8 +88,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -117,13 +114,11 @@ namespace Frontend.Controllers
 
             if (ModelState.IsValid)
             {
-                var client = _clientFactory.CreateClient(BackendClientName);
-
                 var json = JsonConvert.SerializeObject(vaerktoej);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Update
-                var result = await client.PutAsync(VaerktoejBaseUrl, content);
+                var result = await _client.PutAsync($"{VaerktoejBaseUrl}/{id}", content);
 
                 if (result.IsSuccessStatusCode)
                     return RedirectToAction(nameof(Index));
@@ -137,8 +132,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -157,8 +151,7 @@ namespace Frontend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var result = await client.DeleteAsync($"{VaerktoejBaseUrl}/{id}");
+            var result = await _client.DeleteAsync($"{VaerktoejBaseUrl}/{id}");
 
             if (!result.IsSuccessStatusCode)
                 return NotFound();

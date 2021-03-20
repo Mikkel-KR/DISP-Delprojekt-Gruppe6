@@ -11,19 +11,20 @@ namespace Frontend.Controllers
     public class VaerktoejskasseController : Controller
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _client;
         private readonly string BackendClientName = "backend";
         private readonly string VaerktoejskasseBaseUrl = "api/Vaerktoejskasse";
 
         public VaerktoejskasseController(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
+            _client = clientFactory.CreateClient(BackendClientName);
         }
 
         // GET: Vaerktoejskasse
         public async Task<IActionResult> Index()
         {
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync(VaerktoejskasseBaseUrl);
+            var response = await _client.GetAsync(VaerktoejskasseBaseUrl);
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -40,8 +41,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -70,13 +70,11 @@ namespace Frontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                var client = _clientFactory.CreateClient(BackendClientName);
-
                 var json = JsonConvert.SerializeObject(vaerktoejskasse);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Create
-                var result = await client.PostAsync(VaerktoejskasseBaseUrl, content);
+                var result = await _client.PostAsync(VaerktoejskasseBaseUrl, content);
 
                 if (result.IsSuccessStatusCode)
                     return RedirectToAction(nameof(Index));
@@ -90,8 +88,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -117,14 +114,11 @@ namespace Frontend.Controllers
 
             if (ModelState.IsValid)
             {
-
-                var client = _clientFactory.CreateClient(BackendClientName);
-
                 var json = JsonConvert.SerializeObject(vaerktoejskasse);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 //Update
-                var result = await client.PutAsync(VaerktoejskasseBaseUrl, content);
+                var result = await _client.PutAsync($"{VaerktoejskasseBaseUrl}/{id}", content);
 
                 if (result.IsSuccessStatusCode)
                     return RedirectToAction(nameof(Index));
@@ -138,8 +132,7 @@ namespace Frontend.Controllers
             if (id == null)
                 return NotFound();
 
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var response = await client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
 
             if (!response.IsSuccessStatusCode)
                 return NotFound();
@@ -158,8 +151,7 @@ namespace Frontend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var client = _clientFactory.CreateClient(BackendClientName);
-            var result = await client.DeleteAsync($"{VaerktoejskasseBaseUrl}/{id}");
+            var result = await _client.DeleteAsync($"{VaerktoejskasseBaseUrl}/{id}");
 
             if (!result.IsSuccessStatusCode)
                 return NotFound();
