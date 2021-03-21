@@ -25,10 +25,7 @@ namespace Frontend
             services.AddControllers().AddNewtonsoftJson();
 
             //services.AddDbContext<ApplicationDbContextFrontend>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("localDb")));
-
-            //Enable DIP for a HTTP Client to subsitute calls to DBContex with a HTTP Request
-            //services.AddHttpClient();
+            //        options.UseSqlServer(Configuration.GetConnectionString("localTestDb")));
 
             _ = services.AddHttpClient("backend", c =>
             {
