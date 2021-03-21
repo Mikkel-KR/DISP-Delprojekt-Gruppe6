@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1110</x>
+      <y>290</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Backend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>830</x>
+      <y>290</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Frontend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>560</x>
+      <y>300</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Client*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>290</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+http://localhost:42585</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>930</x>
+      <y>290</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+http://localhost:23089
+</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>210</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*localDb*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1150</x>
+      <y>230</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1140</x>
+      <y>660</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Backend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>780</x>
+      <y>570</y>
+      <w>530</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>*Docker Compose*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>840</x>
+      <y>660</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Frontend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>620</x>
+      <y>670</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Client*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>660</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>660</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>820</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*sqlServer*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>700</y>
+      <w>30</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>830</x>
+      <y>620</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>620</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1130</x>
+      <y>780</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1100</x>
+      <y>1100</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Backend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>600</x>
+      <y>980</y>
+      <w>710</w>
+      <h>500</h>
+    </coordinates>
+    <panel_attributes>*Kubernetes cluster*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>770</x>
+      <y>1100</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*Frontend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>470</x>
+      <y>1100</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Client*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>1090</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>1100</y>
+      <w>100</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>1350</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+*sqlServer*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>750</x>
+      <y>1060</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1080</x>
+      <y>1060</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1080</x>
+      <y>1310</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Container</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>740</x>
+      <y>1030</y>
+      <w>170</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Pod
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>630</x>
+      <y>1090</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Service*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1070</x>
+      <y>1030</y>
+      <w>170</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Pod
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1070</x>
+      <y>1280</y>
+      <w>170</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Pod
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>60</y>
+      <w>920</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>deployment-model
+*step-1*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>510</y>
+      <w>920</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>deployment-model
+*step-2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>440</x>
+      <y>960</y>
+      <w>920</w>
+      <h>570</h>
+    </coordinates>
+    <panel_attributes>deployment-model
+*step-3*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>950</x>
+      <y>1100</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Service*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>1090</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>1100</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>1140</y>
+      <w>170</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;90.0;150.0;90.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>940</x>
+      <y>1350</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*Service*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1000</x>
+      <y>1350</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

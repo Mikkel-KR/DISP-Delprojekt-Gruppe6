@@ -1,44 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Frontend.Data;
 using Frontend.Models;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Frontend.Controllers
 {
     public class VaerktoejskasseController : Controller
     {
-        private readonly ApplicationDbContextFrontend _context;
+        private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _client;
+        private readonly string BackendClientName = "backend";
+        private readonly string VaerktoejskasseBaseUrl = "api/Vaerktoejskasse";
 
-        public VaerktoejskasseController(ApplicationDbContextFrontend context)
+        public VaerktoejskasseController(IHttpClientFactory clientFactory)
         {
-            _context = context;
+            _clientFactory = clientFactory;
+            _client = clientFactory.CreateClient(BackendClientName);
         }
 
         // GET: Vaerktoejskasse
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vaerktoejskasse.ToListAsync());
+            var response = await _client.GetAsync(VaerktoejskasseBaseUrl);
+
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoejskasser = JsonConvert.DeserializeObject<List<Vaerktoejskasse>>(json);
+
+            return View(vaerktoejskasser);
         }
 
         // GET: Vaerktoejskasse/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoejskasse = await _context.Vaerktoejskasse
-                .FirstOrDefaultAsync(m => m.VTKId == id);
-            if (vaerktoejskasse == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
+
+            if (vaerktoejskasse == null)
+                return NotFound();
 
             return View(vaerktoejskasse);
         }
@@ -58,9 +70,14 @@ namespace Frontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vaerktoejskasse);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(vaerktoejskasse);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Create
+                var result = await _client.PostAsync(VaerktoejskasseBaseUrl, content);
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(vaerktoejskasse);
         }
@@ -69,15 +86,19 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoejskasse = await _context.Vaerktoejskasse.FindAsync(id);
-            if (vaerktoejskasse == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
+
+            if (vaerktoejskasse == null)
+                return NotFound();
+
             return View(vaerktoejskasse);
         }
 
@@ -89,29 +110,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("VTKId,VTKAnskaffet,VTKFabrikat,VTKEjesAf,VTKModel,VTKSerienummer,VTKFarve")] Vaerktoejskasse vaerktoejskasse)
         {
             if (id != vaerktoejskasse.VTKId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(vaerktoejskasse);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VaerktoejskasseExists(vaerktoejskasse.VTKId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(vaerktoejskasse);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Update
+                var result = await _client.PutAsync($"{VaerktoejskasseBaseUrl}/{id}", content);
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(vaerktoejskasse);
         }
@@ -120,16 +130,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoejskasse = await _context.Vaerktoejskasse
-                .FirstOrDefaultAsync(m => m.VTKId == id);
-            if (vaerktoejskasse == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejskasseBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoejskasse = JsonConvert.DeserializeObject<Vaerktoejskasse>(json);
+
+            if (vaerktoejskasse == null)
+                return NotFound();
 
             return View(vaerktoejskasse);
         }
@@ -139,15 +151,12 @@ namespace Frontend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vaerktoejskasse = await _context.Vaerktoejskasse.FindAsync(id);
-            _context.Vaerktoejskasse.Remove(vaerktoejskasse);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            var result = await _client.DeleteAsync($"{VaerktoejskasseBaseUrl}/{id}");
 
-        private bool VaerktoejskasseExists(int id)
-        {
-            return _context.Vaerktoejskasse.Any(e => e.VTKId == id);
+            if (!result.IsSuccessStatusCode)
+                return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

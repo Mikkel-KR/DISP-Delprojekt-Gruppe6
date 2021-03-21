@@ -1,44 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Frontend.Data;
 using Frontend.Models;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Frontend.Controllers
 {
     public class VaerktoejController : Controller
     {
-        private readonly ApplicationDbContextFrontend _context;
+        private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _client;
+        private readonly string BackendClientName = "backend";
+        private readonly string VaerktoejBaseUrl = "api/Vaerktoej";
 
-        public VaerktoejController(ApplicationDbContextFrontend context)
+        public VaerktoejController(IHttpClientFactory clientFactory)
         {
-            _context = context;
+            _clientFactory = clientFactory;
+            _client = clientFactory.CreateClient(BackendClientName);
         }
 
         // GET: Vaerktoej
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vaerktoej.ToListAsync());
+            var response = await _client.GetAsync(VaerktoejBaseUrl);
+
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoejList = JsonConvert.DeserializeObject<List<Vaerktoej>>(json);
+
+            return View(vaerktoejList);
         }
 
         // GET: Vaerktoej/Details/5
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoej = await _context.Vaerktoej
-                .FirstOrDefaultAsync(m => m.VTId == id);
-            if (vaerktoej == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
+
+            if (vaerktoej == null)
+                return NotFound();
 
             return View(vaerktoej);
         }
@@ -58,9 +70,14 @@ namespace Frontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vaerktoej);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(vaerktoej);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Create
+                var result = await _client.PostAsync(VaerktoejBaseUrl, content);
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(vaerktoej);
         }
@@ -69,15 +86,19 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoej = await _context.Vaerktoej.FindAsync(id);
-            if (vaerktoej == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
+
+            if (vaerktoej == null)
+                return NotFound();
+
             return View(vaerktoej);
         }
 
@@ -89,29 +110,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(long id, [Bind("VTId,VTAnskaffet,VTFabrikat,VTModel,VTSerienr,VTType,LiggerIvtk")] Vaerktoej vaerktoej)
         {
             if (id != vaerktoej.VTId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(vaerktoej);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VaerktoejExists(vaerktoej.VTId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(vaerktoej);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Update
+                var result = await _client.PutAsync($"{VaerktoejBaseUrl}/{id}", content);
+
+                if (result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(vaerktoej);
         }
@@ -120,16 +130,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var vaerktoej = await _context.Vaerktoej
-                .FirstOrDefaultAsync(m => m.VTId == id);
-            if (vaerktoej == null)
-            {
+            var response = await _client.GetAsync($"{VaerktoejBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var vaerktoej = JsonConvert.DeserializeObject<Vaerktoej>(json);
+
+            if (vaerktoej == null)
+                return NotFound();
 
             return View(vaerktoej);
         }
@@ -139,15 +151,12 @@ namespace Frontend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var vaerktoej = await _context.Vaerktoej.FindAsync(id);
-            _context.Vaerktoej.Remove(vaerktoej);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            var result = await _client.DeleteAsync($"{VaerktoejBaseUrl}/{id}");
 
-        private bool VaerktoejExists(long id)
-        {
-            return _context.Vaerktoej.Any(e => e.VTId == id);
+            if (!result.IsSuccessStatusCode)
+                return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

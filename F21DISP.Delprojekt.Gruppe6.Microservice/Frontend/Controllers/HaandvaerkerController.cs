@@ -1,44 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Frontend.Data;
 using Frontend.Models;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Frontend.Controllers
 {
     public class HaandvaerkerController : Controller
     {
-        private readonly ApplicationDbContextFrontend _context;
+        private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _client;
+        private readonly string BackendClientName = "backend";
+        private readonly string HaandvaerkerBaseUrl = "api/Haandvaerker";
 
-        public HaandvaerkerController(ApplicationDbContextFrontend context)
+        public HaandvaerkerController(IHttpClientFactory clientFactory)
         {
-            _context = context;
+            _clientFactory = clientFactory;
+            _client = _clientFactory.CreateClient(BackendClientName);
         }
 
         // GET: Haandvaerker
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Haandvaerker.ToListAsync());
+            var response = await _client.GetAsync(HaandvaerkerBaseUrl);
+
+            if(!response.IsSuccessStatusCode)
+                return NotFound();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var haandvaerkers = JsonConvert.DeserializeObject<List<Haandvaerker>>(json);
+
+            return View(haandvaerkers);
         }
 
         // GET: Haandvaerker/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var haandvaerker = await _context.Haandvaerker
-                .FirstOrDefaultAsync(m => m.HaandvaerkerId == id);
-            if (haandvaerker == null)
-            {
+            var response = await _client.GetAsync($"{HaandvaerkerBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
+
+            if (haandvaerker == null)
+                return NotFound();
 
             return View(haandvaerker);
         }
@@ -58,9 +70,14 @@ namespace Frontend.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(haandvaerker);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(haandvaerker);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Create
+                var result = await _client.PostAsync(HaandvaerkerBaseUrl, content);
+
+                if(result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(haandvaerker);
         }
@@ -69,15 +86,19 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var haandvaerker = await _context.Haandvaerker.FindAsync(id);
-            if (haandvaerker == null)
-            {
+            var response = await _client.GetAsync($"{HaandvaerkerBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
+
+            if (haandvaerker == null)
+                return NotFound();
+
             return View(haandvaerker);
         }
 
@@ -89,29 +110,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("HaandvaerkerId,HVAnsaettelsedato,HVEfternavn,HVFagomraade,HVFornavn")] Haandvaerker haandvaerker)
         {
             if (id != haandvaerker.HaandvaerkerId)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(haandvaerker);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!HaandvaerkerExists(haandvaerker.HaandvaerkerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                var json = JsonConvert.SerializeObject(haandvaerker);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                //Update
+                var result = await _client.PutAsync($"{HaandvaerkerBaseUrl}/{id}", content);
+
+                if(result.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
             }
             return View(haandvaerker);
         }
@@ -120,16 +130,18 @@ namespace Frontend.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var haandvaerker = await _context.Haandvaerker
-                .FirstOrDefaultAsync(m => m.HaandvaerkerId == id);
-            if (haandvaerker == null)
-            {
+            var response = await _client.GetAsync($"{HaandvaerkerBaseUrl}/{id}");
+
+            if (!response.IsSuccessStatusCode)
                 return NotFound();
-            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var haandvaerker = JsonConvert.DeserializeObject<Haandvaerker>(json);
+
+            if (haandvaerker == null)
+                return NotFound();
 
             return View(haandvaerker);
         }
@@ -139,15 +151,12 @@ namespace Frontend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var haandvaerker = await _context.Haandvaerker.FindAsync(id);
-            _context.Haandvaerker.Remove(haandvaerker);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            var result = await _client.DeleteAsync($"{HaandvaerkerBaseUrl}/{id}");
 
-        private bool HaandvaerkerExists(int id)
-        {
-            return _context.Haandvaerker.Any(e => e.HaandvaerkerId == id);
+            if (!result.IsSuccessStatusCode)
+                return NotFound();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
