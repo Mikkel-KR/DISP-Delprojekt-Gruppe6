@@ -1,31 +1,36 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: backend-pod
+  name: gr6-backend-pod
   namespace: swtdisp-ap1-gr6
+  labels:
+    app: gr6-backend
 spec:
+  selector:
+    matchLabels:
+      app: gr6-backend
   containers:
-    - image: dockdal/backend:v1
-      name: backend
+    - name: gr6-backend
+      image: dockdal/backend:v1
       env:
       - name: DBHOST
-        value: "10.97.164.26"
+        value: "gr6-mssql19-service"
       - name: DBPASSWORD
         value: "F20ItOnk123"
       ports:
-      - containerPort: 8080
+      - containerPort: 80
         protocol: TCP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: gr6-backend-service
   namespace: swtdisp-ap1-gr6
 spec:
   selector:
-    name: backend-pod
+    app: gr6-backend
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
   type: LoadBalancer
