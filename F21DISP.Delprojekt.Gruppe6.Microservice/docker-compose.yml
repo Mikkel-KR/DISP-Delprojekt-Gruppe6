@@ -5,6 +5,9 @@ services:
       context: ./Backend
       dockerfile: Dockerfile
     restart: always
+    environment:
+      DBHOST: db
+      DBPASSWORD: "F20ItOnk123"
     depends_on:
       - db
       
@@ -27,5 +30,3 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "F20ItOnk123"
-    ports:
-      - "1433:1433"
