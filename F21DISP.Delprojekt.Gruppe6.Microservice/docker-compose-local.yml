@@ -1,7 +1,9 @@
 version: '3'
 services:
   backend-service:
-    image: dockdal/backend:v1
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
     restart: always
     environment:
       DBHOST: db
@@ -10,7 +12,9 @@ services:
       - db
       
   frontend-service:
-    image: dockdal/frontend:v1
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
     restart: always
     environment:
       F21DISPBACKEND_SERVICE_HOST: backend-service
