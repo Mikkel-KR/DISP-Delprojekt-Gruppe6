@@ -32,14 +32,14 @@ namespace Frontend
 
             _ = services.AddHttpClient("backend", c =>
             {
-                var host = Configuration["F20ITONKBACKENDJRT_SERVICE_HOST"];
-                var port = Configuration["F20ITONKBACKENDJRT_PORT_8080_TCP_PORT"];
+                var host = Configuration["F21DISPBACKEND_SERVICE_HOST"];
+                var port = Configuration["F21DISPBACKEND_PORT_8080_TCP_PORT"];
                 //c.BaseAddress = new Uri("http://10.24.128.200:32787/"); //local test connection to backend container
                 //c.BaseAddress = new Uri("http://10.192.57.127:32787/"); //local test connection to backend container
-                c.BaseAddress = new Uri("http://localhost:23089/"); //local IIS backend connection (DEBUG)
+                //c.BaseAddress = new Uri("http://localhost:23089/"); //local IIS backend connection (DEBUG)
 
                 //Remark below not using https but http
-                //c.BaseAddress = new Uri("http://" + host + ":" + port + "/"); //Using environment variables
+                c.BaseAddress = new Uri("http://" + host + ":" + port + "/"); //Using environment variables
                 //c.BaseAddress = new Uri("http://f20itonkbackendjrt:8080/"); //Hard coded K8s Service name
                 //c.BaseAddress = new Uri("http://146.148.126.255:8080/");//External K8s Service (LoadBalancer)
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
