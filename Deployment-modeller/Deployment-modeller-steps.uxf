@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1110</x>
-      <y>230</y>
-      <w>110</w>
-      <h>50</h>
+      <x>1112</x>
+      <y>184</y>
+      <w>88</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;microservice&gt;&gt;
 *Backend*</panel_attributes>
@@ -16,10 +16,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>830</x>
-      <y>230</y>
-      <w>110</w>
-      <h>50</h>
+      <x>888</x>
+      <y>184</y>
+      <w>88</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;microservice&gt;&gt;
 *Frontend*</panel_attributes>
@@ -28,10 +28,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>550</x>
-      <y>240</y>
-      <w>120</w>
-      <h>30</h>
+      <x>664</x>
+      <y>192</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*Client (browser)*</panel_attributes>
     <additional_attributes/>
@@ -39,10 +39,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>230</y>
-      <w>190</w>
-      <h>40</h>
+      <x>752</x>
+      <y>184</y>
+      <w>152</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 http://localhost:42585</panel_attributes>
@@ -51,10 +51,10 @@ http://localhost:42585</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>930</x>
-      <y>230</y>
-      <w>200</w>
-      <h>50</h>
+      <x>968</x>
+      <y>184</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 http://localhost:23089
@@ -64,10 +64,10 @@ http://localhost:23089
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>150</y>
-      <w>100</w>
-      <h>30</h>
+      <x>1112</x>
+      <y>120</y>
+      <w>80</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*localDb*</panel_attributes>
     <additional_attributes/>
@@ -75,10 +75,10 @@ http://localhost:23089
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1150</x>
-      <y>170</y>
-      <w>90</w>
-      <h>80</h>
+      <x>1144</x>
+      <y>136</y>
+      <w>72</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;access&gt;&gt;</panel_attributes>
@@ -87,10 +87,10 @@ http://localhost:23089
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1030</x>
-      <y>590</y>
-      <w>170</w>
-      <h>50</h>
+      <x>1048</x>
+      <y>472</y>
+      <w>136</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;microservice&gt;&gt;
 *dockdal/backend:v1*</panel_attributes>
@@ -99,10 +99,10 @@ http://localhost:23089
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>640</x>
-      <y>480</y>
-      <w>620</w>
-      <h>350</h>
+      <x>736</x>
+      <y>384</y>
+      <w>496</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>*F21DispDelprojektMicroservice (Docker Compose)*</panel_attributes>
     <additional_attributes/>
@@ -110,10 +110,10 @@ http://localhost:23089
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>750</x>
-      <y>590</y>
-      <w>150</w>
-      <h>50</h>
+      <x>824</x>
+      <y>472</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;microservice&gt;&gt;
 *dockdal/frontend:v1*</panel_attributes>
@@ -122,10 +122,10 @@ http://localhost:23089
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>490</x>
-      <y>600</y>
-      <w>130</w>
-      <h>30</h>
+      <x>616</x>
+      <y>480</y>
+      <w>104</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*Client (browser)*</panel_attributes>
     <additional_attributes/>
@@ -133,10 +133,10 @@ http://localhost:23089
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
-      <y>590</y>
-      <w>150</w>
-      <h>50</h>
+      <x>712</x>
+      <y>472</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=localhost:8080
@@ -146,10 +146,10 @@ m1=localhost:8080
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>890</x>
-      <y>590</y>
-      <w>150</w>
-      <h>50</h>
+      <x>936</x>
+      <y>472</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=:80
@@ -160,10 +160,10 @@ m1=:80
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>750</y>
-      <w>220</w>
-      <h>50</h>
+      <x>1008</x>
+      <y>600</y>
+      <w>176</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;microservice&gt;&gt;
 *mssql/server:2019-latest*</panel_attributes>
@@ -172,10 +172,10 @@ m1=:80
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>630</y>
-      <w>30</w>
-      <h>80</h>
+      <x>1064</x>
+      <y>504</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 </panel_attributes>
@@ -184,10 +184,10 @@ m1=:80
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>740</x>
-      <y>530</y>
-      <w>170</w>
-      <h>120</h>
+      <x>816</x>
+      <y>424</y>
+      <w>136</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>symbol=component
 &lt;&lt;Container&gt;&gt;
@@ -198,10 +198,10 @@ m1=:80
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1020</x>
-      <y>530</y>
-      <w>190</w>
-      <h>120</h>
+      <x>1040</x>
+      <y>424</y>
+      <w>152</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>symbol=component
 &lt;&lt;Container&gt;&gt;
@@ -211,10 +211,10 @@ m1=:80
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>970</x>
-      <y>690</y>
-      <w>240</w>
-      <h>120</h>
+      <x>1000</x>
+      <y>552</y>
+      <w>192</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>symbol=component
 &lt;&lt;Container&gt;&gt;
@@ -224,45 +224,49 @@ m1=:80
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1210</x>
-      <y>1040</y>
-      <w>150</w>
-      <h>50</h>
+      <x>1144</x>
+      <y>888</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;microservice&gt;&gt;
-*dockdal/backend:v1*</panel_attributes>
+    <panel_attributes>bg=cyan
+&lt;&lt;microservice&gt;&gt;
+*dockdal/backend:v1*
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>520</x>
-      <y>920</y>
-      <w>930</w>
-      <h>500</h>
+      <x>400</x>
+      <y>736</y>
+      <w>984</w>
+      <h>576</h>
     </coordinates>
-    <panel_attributes>*Kubernetes cluster*</panel_attributes>
+    <panel_attributes>fontsize=18
+*Kubernetes cluster*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>730</x>
-      <y>1040</y>
-      <w>150</w>
-      <h>50</h>
+      <x>648</x>
+      <y>888</y>
+      <w>120</w>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;microservice&gt;&gt;
+    <panel_attributes>bg=cyan
+&lt;&lt;microservice&gt;&gt;
 *dockdal/frontend:v1*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>1040</y>
-      <w>120</w>
-      <h>30</h>
+      <x>280</x>
+      <y>904</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>*Client (browser)*</panel_attributes>
     <additional_attributes/>
@@ -270,115 +274,66 @@ m1=:80
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>1030</y>
-      <w>120</w>
-      <h>40</h>
+      <x>368</x>
+      <y>896</y>
+      <w>72</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+*8080*</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>1040</y>
-      <w>160</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-
-</panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1190</x>
-      <y>1290</y>
-      <w>180</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;microservice&gt;&gt;
-*mssql/server:2019-latest*</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>710</x>
-      <y>1000</y>
-      <w>190</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-&lt;&lt;Container&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1190</x>
-      <y>1000</y>
-      <w>190</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-&lt;&lt;Container&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1180</x>
-      <y>1250</y>
-      <w>200</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-&lt;&lt;Container&gt;&gt;</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLState</id>
-    <coordinates>
-      <x>700</x>
-      <y>970</y>
-      <w>210</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>Pod
-
-
-
-
-
-
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLObject</id>
-    <coordinates>
-      <x>570</x>
-      <y>1030</y>
-      <w>70</w>
+      <x>760</x>
+      <y>896</y>
+      <w>152</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>*Service*</panel_attributes>
+    <panel_attributes>lt=&lt;-
+*80*
+</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>632</x>
+      <y>848</y>
+      <w>152</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>bg=green
+symbol=component
+&lt;&lt;Container&gt;&gt;
+*gr6-frontend*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1128</x>
+      <y>848</y>
+      <w>152</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+&lt;&lt;Container&gt;&gt;
+*gr6-backend*
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1170</x>
-      <y>970</y>
-      <w>230</w>
-      <h>150</h>
+      <x>624</x>
+      <y>832</y>
+      <w>168</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Pod
+    <panel_attributes>bg=blue
+Pod
 
 
 
@@ -392,12 +347,13 @@ m1=:80
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1160</x>
-      <y>1220</y>
-      <w>240</w>
-      <h>150</h>
+      <x>1112</x>
+      <y>832</y>
+      <w>184</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Pod
+    <panel_attributes>bg=blue
+Pod
 
 
 
@@ -411,10 +367,10 @@ m1=:80
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>440</x>
+      <x>576</x>
       <y>0</y>
-      <w>920</w>
-      <h>420</h>
+      <w>736</w>
+      <h>336</h>
     </coordinates>
     <panel_attributes>deployment-model
 *step-1*</panel_attributes>
@@ -423,10 +379,10 @@ m1=:80
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>440</x>
-      <y>450</y>
-      <w>920</w>
-      <h>410</h>
+      <x>576</x>
+      <y>360</y>
+      <w>736</w>
+      <h>328</h>
     </coordinates>
     <panel_attributes>deployment-model
 *step-2*</panel_attributes>
@@ -435,83 +391,347 @@ m1=:80
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>310</x>
-      <y>890</y>
-      <w>1190</w>
-      <h>560</h>
+      <x>264</x>
+      <y>712</y>
+      <w>1160</w>
+      <h>624</h>
     </coordinates>
     <panel_attributes>deployment-model
 *step-3*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLObject</id>
-    <coordinates>
-      <x>1010</x>
-      <y>1040</y>
-      <w>70</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>*Service*</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>1030</y>
-      <w>120</w>
+      <x>544</x>
+      <y>896</y>
+      <w>96</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
+*80*
 </panel_attributes>
     <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1070</x>
-      <y>1040</y>
-      <w>160</w>
-      <h>40</h>
+      <x>1016</x>
+      <y>896</y>
+      <w>112</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+*80*</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>920</y>
+      <w>272</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+*1433*</panel_attributes>
+    <additional_attributes>10.0;240.0;10.0;130.0;320.0;130.0;320.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>960</x>
-      <y>1080</y>
-      <w>310</w>
-      <h>230</h>
+      <y>1120</y>
+      <w>128</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;210.0;10.0;90.0;290.0;90.0;290.0;10.0</additional_attributes>
+*1433*</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>UMLObject</id>
+    <id>UMLDeployment</id>
     <coordinates>
-      <x>940</x>
-      <y>1290</y>
-      <w>70</w>
+      <x>1072</x>
+      <y>768</y>
+      <w>272</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Deployment&gt;&gt;
+*gr6-backend-deployment*
+[ app = gr6-frontend (label) ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>576</x>
+      <y>768</y>
+      <w>272</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Deployment&gt;&gt;
+*gr6-frontend-deployment*
+[ app = gr6-backend (label) ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1208</x>
+      <y>960</y>
+      <w>120</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>*Service*</panel_attributes>
+    <panel_attributes>symbol=artifact
+*ReplicaSet*
+Replicas = 1
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>584</x>
+      <y>960</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>bg=pink
+symbol=artifact
+*ReplicaSet*
+Replicas = 1
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1000</x>
-      <y>1290</y>
-      <w>210</w>
+      <x>696</x>
+      <y>944</y>
+      <w>40</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;40.0;30.0;40.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1176</x>
+      <y>944</y>
+      <w>48</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;40.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>896</x>
+      <y>888</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=red
+&lt;&lt;Service&gt;&gt;
+*gr6-backend-service*
+--
+Type: LoadBalancer
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>1112</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=red
+&lt;&lt;Service&gt;&gt;
+*mssql-service*
+--
+Type: LoadBalancer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>424</x>
+      <y>888</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=red
+&lt;&lt;Service&gt;&gt;
+*gr6-frontend-service*
+--
+Type: LoadBalancer
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1088</x>
+      <y>1160</y>
+      <w>192</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>bg=cyan
+&lt;&lt;microservice&gt;&gt;
+*(...)/mssql/server:2019-latest*
 </panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1080</x>
+      <y>1120</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>bg=green
+symbol=component
+&lt;&lt;Container&gt;&gt;
+*gr6-mssql*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1072</x>
+      <y>1104</y>
+      <w>224</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+Pod
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>1040</x>
+      <y>1048</y>
+      <w>304</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Deployment&gt;&gt;
+*gr6-mssql19-deployment*
+[ app = gr6-mssql (label) ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1208</x>
+      <y>1240</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+*ReplicaSet*
+Replicas = 1
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1184</x>
+      <y>1216</y>
+      <w>40</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;30.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>1256</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>1048</x>
+      <y>1232</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Volume&gt;&gt;
+*mssql-base-volume*
+/var/opt/mssql</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>848</x>
+      <y>1240</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;PersistentVolumeClaim&gt;&gt;
+*mssql-base-volume*
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>664</x>
+      <y>1232</y>
+      <w>128</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+&lt;&lt;PersistentVolume&gt;&gt;
+*mssql-base-volume*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>1216</y>
+      <w>40</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;60.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>1256</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
   </element>
 </diagram>
