@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  namespace: swtdisp-ap1-gr6
+spec:
+  containers:
+    - image: dockdal/frontend:v1
+      name: frontend
+      env:
+      - name: F21DISPBACKEND_SERVICE_HOST
+        value: backend-service
+      - name: F21DISPBACKEND_PORT_8080_TCP_PORT
+        value: 80
+      ports:
+      - containerPort: 8080
+        protocol: TCP

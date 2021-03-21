@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-pod
+  namespace: swtdisp-ap1-gr6
+spec:
+  containers:
+    - image: mcr.microsoft.com/mssql/server:2019-latest
+      name: db
+      env:
+      - name: ACCEPT_EULA
+        value: "Y"
+      - name: SA_PASSWORD
+        value: "F20ItOnk123"
+      ports:
+      - containerPort: 1433
+        protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+  namespace: swtdisp-ap1-gr6
+spec:
+  selector:
+    name: db
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: LoadBalancer

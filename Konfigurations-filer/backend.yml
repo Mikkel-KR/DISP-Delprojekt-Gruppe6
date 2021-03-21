@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-pod
+  namespace: swtdisp-ap1-gr6
+spec:
+  containers:
+    - image: dockdal/backend:v1
+      name: backend
+      env:
+      - name: DBHOST
+        value: "10.97.164.26"
+      - name: DBPASSWORD
+        value: "F20ItOnk123"
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: swtdisp-ap1-gr6
+spec:
+  selector:
+    name: backend-pod
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
