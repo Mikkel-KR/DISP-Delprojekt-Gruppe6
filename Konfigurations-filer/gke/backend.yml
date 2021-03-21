@@ -20,9 +20,9 @@ spec:
           image: dockdal/backend:v1
           env:
           - name: DBHOST
-            value: "mssql-service"
+            value: "mssql-service.default.svc.cluster.local"
           - name: DBPASSWORD
-            value: "F20ItOnk123"
+            value: "F21swtdisp!!"
           ports:
           - containerPort: 80
             protocol: TCP
