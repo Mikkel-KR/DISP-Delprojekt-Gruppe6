@@ -20,7 +20,7 @@ spec:
           image: dockdal/backend:v1
           env:
           - name: DBHOST
-            value: "mssql-service.default.svc.cluster.local"
+            value: "mssql-deployment.default.svc.cluster.local"
           - name: DBPASSWORD
             value: "F21swtdisp!!"
           ports:
@@ -39,4 +39,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+  type: ClusterIP
